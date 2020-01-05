@@ -16,13 +16,13 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 const albumsRouter = require("./routes/albumsRoute");
 const feedRouter = require("./routes/feedRoute");
-const logInRouter = require("./routes/logInRouter");
-const signOutRouter = require("./routes/signUpRoute");
-const signUpRouter = require("./routes.signUpRoute");
+const logInRouter = require("./routes/logInRoute");
+const signOutRouter = require("./routes/signOutRoute");
+const signUpRouter = require("./routes/signUpRoute");
 app.use("/albums", albumsRouter);
 app.use("/feed", feedRouter);
-app.use("/log_in", logInRouter);
-app.use("/sign_out", signOutRouter);
+// app.use("/log_in", logInRouter);
+// app.use("/sign_out", signOutRouter);
 app.use("/sign_up", signUpRouter);
 
 app.use('/', indexRouter);

@@ -2,7 +2,9 @@
 // POST /albums/:id - Create new empty album for user.
 
 const express = require('express');
-const db = require('../pgPromise');
+const pgp = require('pg-promise')();
+const connectionString = "postgres://localhost:5432/seed"; //url where psql is running
+const db = pgp(connectionString); //connected db instance
 
 const Router = express.Router();
 
@@ -43,7 +45,7 @@ Router.post('/:id', async (req, res) => {
 });
 
 // DELETE SINGLE ALBUM
-router.delete("/:id", async (req, res) => {
+Router.delete('/:id', async (req, res) => {
     const id = req.params.id
     const inputQuery = (`DELETE FROM albums WHERE id = $1`);
 

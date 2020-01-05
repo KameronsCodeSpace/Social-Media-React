@@ -6,8 +6,8 @@ import Nav from './Components/Nav';
 import Feed from './Feed';
 import Albums from './Albums';
 import Workspace from './Workspace';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 function App() {
   return (

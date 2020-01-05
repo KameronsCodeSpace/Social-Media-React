@@ -9,9 +9,9 @@ function Login() {
             <br />
             <br />
             <img src='https://media.giphy.com/media/JWGjPl2SpXUFW/giphy.gif'></img>
-            <p>Username</p><input placeholder='Email'></input>
             <br />
             <br />
+            <p>User Email: <input placeholder='Email'></input></p>
             <a href="/Feed">Log In</a>
             <br />
             <br />
