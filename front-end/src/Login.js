@@ -1,21 +1,28 @@
 import React from 'react';
 import './App.css';
+import { Link } from "react-router-dom";
 
 function Login() {
+
     return (
-        <div>
+        <div className="loginDiv">
             <h1>Collage Entourage</h1>
-            <p>A Combination Of Creation</p>
+            <p><strong>A Combination Of Creation</strong></p>
             <br />
             <br />
-            <img src='https://media.giphy.com/media/JWGjPl2SpXUFW/giphy.gif'></img>
-            <p>Username</p><input placeholder='Email'></input>
+            <img src='https://media.giphy.com/media/JWGjPl2SpXUFW/giphy.gif' styles="border-radius: 100px"></img>
+            <p><strong>Username</strong></p>
+            <input type="text" className="inputField" placeholder='Email' />
             <br />
             <br />
-            <a href="/Feed">Log In</a>
+            <Link className="links" to="/Feed">
+                <strong>Log In</strong>
+            </Link>
             <br />
             <br />
-            <a href="/SignUp">Sign Up</a>
+            <Link className="links" to="/SignUp">
+                <strong>Sign Up</strong>
+            </Link>
         </div>
     );
 }

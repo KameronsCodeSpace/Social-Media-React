@@ -14,7 +14,6 @@ function Nav() {
         <Link style={navStyle} to='/Albums'><li>Albums</li></Link>
         <Link style={navStyle} to='/Workspace'><li>Workspace</li></Link>
         <Link style={navStyle} to='/'><li>Sign Out</li></Link>
-        
     </ul>
 </nav>
     );
