@@ -2,16 +2,24 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
+const cors = require('cors')
+
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
+const auth = require('./auth')
 
 const app = express();
+app.use(cors({
+    origin: 'http://localhost:3000',
+    credentials: true
+}))
+
 
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
+app.use(cookieParser(process.env.COOKIE_SECRET));
 app.use(express.static(path.join(__dirname, 'public')));
 
 const albumsRouter = require("./routes/albumsRoute");
@@ -25,28 +33,26 @@ app.use("/feed", feedRouter);
 // app.use("/sign_out", signOutRouter);
 app.use("/sign_up", signUpRouter);
 
+app.use('/auth', auth)
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
-// Catch any 404 error
-app.use(function(err, req, res, next) {
-    res.status(404).json({
-        payload: "Nothing found",
-        err: true
-    });
-});
+// catch 404 and forward to error handler
+app.use(function(req, res, next) {
+    var err = new Error('Not Found');
+    err.status = 404;
+    next(err);
+  });
+  
+  // error handler
+  app.use(function(err, req, res, next) {
 
-// error handler
-app.use(function (err, req, res, next) {
-    console.log(err)
     res.status(err.status || 500);
+
     res.json({
-        payload: {
-        err: err,
-        errStack: err.stack
-        },
-        err: true
-    });
-});
+        message: err.message,
+        error: req.app.get('env') === 'development' ? err : {}
+    })
+  });
 
 module.exports = app;
