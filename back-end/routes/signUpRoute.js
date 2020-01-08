@@ -9,7 +9,7 @@ const Router = express.Router();
 
 Router.post("/", async (req, res) => {
     console.log(req.body);
-    const {email, is_logged_in} = req.body;
+    const { email, is_logged_in } = req.body;
     const inputQuery = `INSERT INTO users(email, is_logged_in) VALUES($1, $2)`;
 
     try {
