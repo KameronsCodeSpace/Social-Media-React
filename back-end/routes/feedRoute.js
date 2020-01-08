@@ -2,9 +2,7 @@
 // who was the poster
 
 const express = require('express');
-const pgp = require('pg-promise')();
-const connectionString = "postgres://localhost:5432/seed"; //url where psql is running
-const db = pgp(connectionString); //connected db instance
+const db = require('../db/connection')
 
 const Router = express.Router();
 
