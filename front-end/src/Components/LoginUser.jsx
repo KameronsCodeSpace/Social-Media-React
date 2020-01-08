@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import $ from 'jquery';
 
-class SignUp extends Component {
+class LoginUser extends Component {
 
     componentDidMount() {
         // Query doesn't redefine the this pointer, but that's how JavaScript 
@@ -31,12 +31,10 @@ class SignUp extends Component {
             // show user stickers
         });
 
-        //sign up jquery
         $(() => {
             console.log("Hello from jquery")
             $('form').submit((event) => {
                 event.preventDefault();
-
                 console.log("submitted")
                 const email = $('#email').val();
                 const password = $('#password').val();
@@ -48,20 +46,21 @@ class SignUp extends Component {
 
                 console.log('User', user)
 
-                self.signup(user)
+                self.login(user)
                     .then(result => {
                         console.log(result)
-                        window.location = `user.html?id=${result.id}`
-                    }).catch(error => {
-                        console.error(error)
+                            window.location = `user.html?id=${result.id}`     
+                               }).catch(error => {
+                                    console.error(error)
 
-                        const $errorMessage = $('#errorMessage');
-                        $errorMessage.text(error.responseJSON.message);
-                        $errorMessage.show();
-                    })
+                                    const $errorMessage = $('#errorMessage');
+                                    $errorMessage.text(error.responseJSON.message);
+                                    $errorMessage.show();
+                                })
 
             })
         })
+
     }
 
     login = (user) => {
@@ -69,14 +68,6 @@ class SignUp extends Component {
         const AUTH_URL = `${API_URL}/auth`;
 
         return $.post(`${AUTH_URL}/login`, user)
-    }
-
-    signup = (user) => {
-        console.log('User', user)
-        const API_URL = this.getHostURL();
-        const AUTH_URL = `${API_URL}/auth`;
-
-        return $.post(`${AUTH_URL}/signup`, user)
     }
 
     parseQuery = (query) => {
@@ -137,7 +128,7 @@ class SignUp extends Component {
 
         return (
             <div>
-                <h1>Sign Up Page</h1>
+                <h1>Login Page</h1>
 
                 <main>
                     <section>
@@ -151,7 +142,7 @@ class SignUp extends Component {
                                 <label htmlFor="password">Password</label>
                                 <input type="password" className="form-control" id="password" placeholder="Enter Password" required />
                             </div>
-                            <button typeof="submit" className="btn btn-default btn-success" href="/albums">Create Account</button>
+                            <button typeof="submit" className="btn btn-default btn-success" href="/albums">Login</button>
                         </form>
                     </section>
                 </main>
@@ -161,24 +152,5 @@ class SignUp extends Component {
 }
 
 
-export default SignUp;
+export default LoginUser;
 
-
-// import React from 'react';
-
-// function SignUp() {
-//     return (
-//         <div>
-//             <h1>Login Page</h1>
-//             <input placeholder='Enter Email'></input>
-//             <br />
-//             <br />
-//             <input placeholder='Enter Password'></input>
-//             <br />
-//             <br />
-//             <a class="btn btn-warning" href="/albums">Create Account</a>
-//         </div>
-//     );
-// }
-
-// export default SignUp;
