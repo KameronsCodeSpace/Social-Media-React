@@ -6,7 +6,14 @@
 
 body{
   background-color: #1F8AC0;
-  color: #EFC9AF;
+  color: white;
+}
+
+h1 {
+  margin-top: 1%;
+  margin-left: 3%;
+  text-align: left;
+  color: white;
 }
 
 nav {
@@ -14,12 +21,12 @@ nav {
   justify-content: space-around;
   align-items: center;
   min-height: 10vh;
-  background: #104C91;
-  color: #EFC9AF;
+  background: coral;
+  color: white;
 }
 
 li {
-  color: #EFC9AF;
+  color: white;
 }
 
 .nav-links {
@@ -70,7 +77,7 @@ li {
   }
 
   li {
-    color: #EFC9AF;
+    color: white;
     margin-left: 10%;
   }
 }
@@ -97,4 +104,133 @@ li {
     color: #EFC9AF;
     margin-left: 10%;
   }
+}
+
+
+.landingPageLoginButton {
+  border-radius: 25px;
+  border: 3px solid #104C91; 
+  width: 200px;    
+  height: 13%;
+  text-align: center;
+  background-color: coral;
+  color: white;
+}
+
+.landingPageSignUpButton {
+  border-radius: 25px;
+  border: 3px solid #104C91; 
+  width: 200px;    
+  height: 13%;
+  text-align: center;
+}
+
+#signUpPageHeader {
+  margin-top: 2%;
+}
+
+#signUpEmail {
+  width: 50%;
+  height: 45px;
+  margin-left: auto;
+  margin-right: auto;
+  border: 5px solid #104C91;
+  border-radius: 10px;  
+}
+
+#signUpPassword {
+  width: 50%;
+  height: 45px;
+  margin-left: auto;
+  margin-right: auto;
+  border: 5px solid #104C91;
+  border-radius: 10px;   
+}
+
+#signUpEmailLabel {
+  width: 50%;
+  margin-top: 3%;
+  text-align: left;
+}
+
+
+#signUpPasswordLabel {
+  width: 50%;
+  margin-top: 3%;
+  text-align: left;
+}
+
+#signUpButton {
+  margin-top: 3%;
+  text-align: left;
+  border-radius: 10px;
+}
+
+#loginPageHeader {
+  margin-top: 2%;
+}
+
+#loginEmail {
+  width: 50%;
+  height: 45px;
+  margin-left: auto;
+  margin-right: auto;
+  border: 5px solid #104C91;
+  border-radius: 10px;  
+}
+
+#loginPassword {
+  width: 50%;
+  height: 45px;
+  margin-left: auto;
+  margin-right: auto;
+  border: 5px solid #104C91;
+  border-radius: 10px; 
+}
+
+#loginEmailLabel {
+  width: 50%;
+  margin-top: 3%;
+  text-align: left;
+}
+
+
+#loginPasswordLabel {
+  width: 50%;
+  margin-top: 3%;
+  text-align: left;
+}
+
+#loginButton {
+  margin-top: 3%;
+  text-align: left;
+  border-radius: 10px;  
+}
+
+#albumsPageHeader {
+  margin-top: 1%;
+  margin-left: 3%;
+  text-align: left;
+  color: white;
+}
+
+#addAlbum {
+  background-color: coral;
+  border-radius: 45%;
+  height: 100%;
+  width: 100%;
+  font-size: 150%;
+}
+
+#addAlbumButtonDiv {
+  display: inline-block;
+  margin-left: 70%;
+}
+
+#landingPageGIF {
+  border-radius: 50px;
+}
+
+#landingHeader {
+  text-align: center;
 }

@@ -19,7 +19,8 @@ function App() {
           <Route path="/LoginUser" exact component={LoginUser} />
           <Route path="/SignUp" exact component={SignUp} />
           <Nav />
-
+        </Switch>
+        <Switch>
           <Route path="/Feed" component={Feed} />
           <Route path="/Albums" component={Albums} />
           <Route path="/Workspace" component={Workspace} />

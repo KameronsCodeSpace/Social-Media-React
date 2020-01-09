@@ -24,7 +24,8 @@ CREATE TABLE posts (
 
 CREATE TABLE albums (
     id SERIAL PRIMARY KEY,
-    image_id INT REFERENCES images (id)
+    -- image_id INT REFERENCES images (id),
+    album_owner VARCHAR REFERENCES users (id)
 );
 
 INSERT INTO USERS (email, password, created_at, is_logged_in) VALUES

@@ -137,21 +137,21 @@ class SignUp extends Component {
 
         return (
             <div>
-                <h1>Sign Up Page</h1>
+                <h1 id="signUpPageHeader">Sign Up Page</h1>
 
                 <main>
                     <section>
                         <div className="alert alert-danger" role="alert" id="errorMessage" style={divStyle}></div>
                         <form className="form">
                             <div className="form-group">
-                                <label htmlFor="email">Email</label>
-                                <input type="email" className="form-control" id="email" placeholder="Enter Email" required />
+                                <label htmlFor="email" id="signUpEmailLabel"><strong>Email</strong></label>
+                                <input type="email" className="form-control" id="signUpEmail" placeholder="Enter Email" required />
                             </div>
                             <div className="form-group">
-                                <label htmlFor="password">Password</label>
-                                <input type="password" className="form-control" id="password" placeholder="Enter Password" required />
+                                <label htmlFor="password" id="signUpPasswordLabel"><strong>Password</strong></label>
+                                <input type="password" className="form-control" id="signUpPassword" placeholder="Enter Password" required />
                             </div>
-                            <button typeof="submit" className="btn btn-default btn-success" href="/albums">Create Account</button>
+                            <button typeof="submit" className="btn btn-default btn-success" id="signUpButton" href="/albums">Create Account</button>
                         </form>
                     </section>
                 </main>
