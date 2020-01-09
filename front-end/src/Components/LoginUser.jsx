@@ -43,20 +43,23 @@ class LoginUser extends Component {
                     email,
                     password
                 }
+                const { history } = this.props;
 
                 console.log('User', user)
 
                 self.login(user)
                     .then(result => {
                         console.log(result)
-                            window.location = `user.html?id=${result.id}`     
-                               }).catch(error => {
-                                    console.error(error)
+                        // window.location = `user.html?id=${result.id}`  
+                        history.push(`/albums`);
 
-                                    const $errorMessage = $('#errorMessage');
-                                    $errorMessage.text(error.responseJSON.message);
-                                    $errorMessage.show();
-                                })
+                    }).catch(error => {
+                        console.error(error)
+
+                        const $errorMessage = $('#errorMessage');
+                        $errorMessage.text(error.responseJSON.message);
+                        $errorMessage.show();
+                    })
 
             })
         })
@@ -126,6 +129,7 @@ class LoginUser extends Component {
             display: 'none'
         };
 
+
         return (
             <div>
                 <h1 id="loginPageHeader">Login Page</h1>
@@ -142,7 +146,8 @@ class LoginUser extends Component {
                                 <label htmlFor="password" id="loginPasswordLabel"><strong>Password</strong></label>
                                 <input type="password" className="form-control" id="loginPassword" placeholder="Enter Password" required />
                             </div>
-                            <button typeof="submit" className="btn btn-default btn-success" id="loginButton" href="/albums">Login</button>
+                            <button typeof="submit" className="btn btn-default btn-success" href="/AuthPages/albums">Login</button>
+
                         </form>
                     </section>
                 </main>
