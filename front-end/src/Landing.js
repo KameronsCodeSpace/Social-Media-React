@@ -5,18 +5,18 @@ import { Link } from 'react-router-dom';
 function Landing() {
     return (
         <div>
-            <h1>Collage Entourage</h1>
-            <p>A Combination Of Creation</p>
+            <h1 id="landingHeader">Collage Entourage</h1>
+            <p><strong>A Combination Of Creation</strong></p>
             <br />
             <br />
-            <img alt='cover' src='https://media.giphy.com/media/JWGjPl2SpXUFW/giphy.gif'></img>
+            <img alt='cover' id="landingPageGIF" src='https://media.giphy.com/media/JWGjPl2SpXUFW/giphy.gif'></img>
             <br />
             <br />
             <br />
-            <Link className="btn btn-warning" to='/LoginUser'>Login</Link>
+            <Link className="landingPageLoginButton btn btn-warning" to='/LoginUser'><strong>Login</strong></Link>
             <br />
             <br />
-            <Link className="btn btn-success" to='/SignUp'>Sign Up</Link>
+            <Link className="landingPageSignUpButton btn btn-success" to='/SignUp'><strong>Sign Up</strong></Link>
 
         </div>
     );

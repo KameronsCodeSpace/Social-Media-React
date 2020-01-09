@@ -23,23 +23,27 @@ Router.get('/:id', async (req, res) => {
     };
 });
 
-// CREATE A ALBUM
-Router.post('/:id', async (req, res) => {
-    const userId = req.params.user_id;
+// ADD NEW ALBUM
+Router.post("/", async (req, res) => {
+    console.log("POST method for adding a new album started");
+    console.log("req.body:", req.body);
+    let insertQuery = `
+    INSERT INTO albums (album_owner) VALUES ($1)
+    `;
     try {
-        const query = 'INSERT INTO albums (image_id) VALUES ($1)';
-        await db.any(query, [userId]);
+        await db.none(insertQuery, [req.body.album_owner]);
         res.json({
-            message: `Created a new album for user ${userId}`,
-            success: true 
+            "status": "Success",
+            "message": "Added one album",
+            "payload": [req.body.album_owner]
         });
-    } catch (err) {
-        console.log(err);
+    } catch (error) {
         res.json({
-            message: `Something went wrong`,
-            success: false
+            "status": "error",
+            message: "Couldn't add a album",
+            payload: null
         });
-    };
+   }
 });
 
 // DELETE SINGLE ALBUM
