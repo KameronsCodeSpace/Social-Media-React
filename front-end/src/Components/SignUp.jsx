@@ -163,23 +163,3 @@ class SignUp extends Component {
 
 
 export default SignUp;
-
-
-// import React from 'react';
-
-// function SignUp() {
-//     return (
-//         <div>
-//             <h1>Login Page</h1>
-//             <input placeholder='Enter Email'></input>
-//             <br />
-//             <br />
-//             <input placeholder='Enter Password'></input>
-//             <br />
-//             <br />
-//             <a class="btn btn-warning" href="/albums">Create Account</a>
-//         </div>
-//     );
-// }
-
-// export default SignUp;
