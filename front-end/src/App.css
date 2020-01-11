@@ -214,17 +214,19 @@ li {
   color: white;
 }
 
-#addAlbum {
+#addAlbumButton {
   background-color: coral;
-  border-radius: 45%;
+  border-radius: 40%;
   height: 100%;
-  width: 100%;
+  width: 10%;
   font-size: 150%;
+  display: inline-block;
+  margin-left: 2%;
 }
 
-#addAlbumButtonDiv {
-  display: inline-block;
-  margin-left: 70%;
+#albumNameInput {
+  margin-left: auto;
+  margin-right: auto;
 }
 
 #landingPageGIF {
