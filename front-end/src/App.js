@@ -15,6 +15,7 @@ class App extends Component {
     super();
     this.initialState = {
       currentUser: '',
+      userLoggedIn: false,
       email: '',
       password: ''
     }
@@ -22,7 +23,14 @@ class App extends Component {
   }
 
   renderLoginComponent = () => {
-    return <LoginUser loginUser={this.loginUser} />
+    return <LoginUser
+      loginUser={this.loginUser}
+      handleEmail={this.handleEmail}
+      handlePassword={this.handlePassword}
+      email={this.state.email}
+      password={this.state.password}
+      userLoggedIn={this.state.userLoggedIn}
+    />
   }
 
   renderSignupComponent = () => {
@@ -31,7 +39,9 @@ class App extends Component {
       handleEmail={this.handleEmail}
       handlePassword={this.handlePassword}
       email={this.state.email}
-      password={this.state.password} />
+      password={this.state.password}
+      userLoggedIn={this.state.userLoggedIn}
+    />
   }
 
   handleEmail = (event) => {
@@ -47,6 +57,29 @@ class App extends Component {
 
   }
 
+  loginUser = async (event) => {
+    event.preventDefault();
+    try {
+      let response = await axios.post(`http://localhost:3001/auth/login`,
+        {
+          email: this.state.email,
+          password: this.state.password
+        });
+      this.setState(() => ({
+        currentUser: response.data,
+        userLoggedIn: true
+      }))
+    } catch (error) {
+      console.error(error)
+
+      // const errorMessage = document.getElementById('errorMessage');
+      // errorMessage.text(error.responseJSON.message);
+      // errorMessage.show();
+    }
+    console.log('Current User', this.state.currentUser)
+  }
+
+
   signUpUser = async (event) => {
     event.preventDefault();
     try {
@@ -55,9 +88,10 @@ class App extends Component {
           email: this.state.email,
           password: this.state.password
         });
-      this.setState({
+      this.setState(() => ({
         currentUser: response.data.data,
-      })
+        userLoggedIn: true
+      }))
     } catch (error) {
       console.error(error)
 
@@ -65,10 +99,31 @@ class App extends Component {
       // $errorMessage.text(error.responseJSON.message);
       // $errorMessage.show();
     }
-    console.log('User', this.user)
+    console.log('User', this.state.currentUser)
+
   }
 
+  renderAuthComponents = () => {
+    return <AuthPages currentUser={this.state.currentUser} />
+  }
 
+  render() {
+
+    return (
+      <div className="App">
+        <Switch>
+          <Route path="/" exact component={Landing} />
+          <Route path="/loginuser" exact render={this.renderLoginComponent} />
+          <Route path="/signup" exact render={this.renderSignupComponent} />
+          <Route path="/" render={this.renderAuthComponents} />
+        </Switch>
+      </div>
+
+    );
+  }
+}
+
+export default App;
 
   //   signup = () => {
   //     console.log('User', this.user)
@@ -85,20 +140,3 @@ class App extends Component {
   //       return 'https://collage-entourage.com';
   //   }
   // }
-
-  render() {
-    return (
-        <div className="App">
-          <Switch>
-            <Route path="/" exact component={Landing} />
-            <Route path="/LoginUser" exact render={this.renderLoginComponent} />
-            <Route path="/SignUp" exact render={this.renderSignupComponent} />
-            <Route path="/" component={AuthPages} />
-          </Switch>
-        </div>
-
-    );
-  }
-}
-
-export default App;
