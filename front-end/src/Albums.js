@@ -16,9 +16,9 @@ class Albums extends Component {
         
     }
 
-    handleUsernameChange = (event) => {
+    handleInputChange = (event) => {
         this.setState({
-        albumInputValue: event.target.value
+            albumInputValue: event.target.value
         });
     }
 
@@ -29,17 +29,18 @@ class Albums extends Component {
     }
 
     render() {
-        const { albumInputValue } = this.state;
+        const { numberOfAlbums, albumInputValue } = this.state;
         return (
             <div>
                 <div>
                     <h1 id="albumsPageHeader">Albums Page</h1>
-                    <form onSubmit="">
+                    <form>
                         <input 
+                            type="text"
                             id="albumNameInput" 
                             placeholder="Album Name" 
                             value={albumInputValue}
-                            onChange={this.albumInputValue}
+                            onChange={this.handleInputChange}
                         />
                         <button type="button" id="addAlbumButton" class="btn btn-success btn-circle btn-xl">Add</button> 
                     </form>
