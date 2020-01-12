@@ -28,14 +28,14 @@ Router.post("/", async (req, res) => {
     console.log("POST method for adding a new album started");
     console.log("req.body:", req.body);
     let insertQuery = `
-    INSERT INTO albums (album_owner) VALUES ($1)
+    INSERT INTO albums (album_owner, album_name) VALUES ($1, $2)
     `;
     try {
-        await db.none(insertQuery, [req.body.album_owner]);
+        await db.none(insertQuery, [req.body.album_owner, req.body.album_name]);
         res.json({
             "status": "Success",
             "message": "Added one album",
-            "payload": [req.body.album_owner]
+            "payload": [req.body.album_owner, req.body.album_name]
         });
     } catch (error) {
         res.json({

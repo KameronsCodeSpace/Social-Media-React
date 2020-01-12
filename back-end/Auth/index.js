@@ -117,43 +117,5 @@ router.post('/login', async (req, res, next) => {
     }
 });
 
-
-router.post('/login', (req, res, next) => {
-    if (validUser(req.body)) {
-        //check if in db
-        User
-            .getOneByEmail(req.body.email)
-            .then(user => {
-                console.log('Logged in User: ', user);
-                if (user) {
-                    //compare password with hashed password
-                    bcrypt.compare(req.body.password, user.password)
-                        .then((result) => {
-                            //if password matches
-                            if (result) {
-                                //setting the 'set-cookie' header
-                                const isSecure = req.app.get('env') != 'development';
-                                res.cookie('user_id', user.id, {
-                                    httpOnly: true,
-                                    secure: isSecure,
-                                    signed: true
-                                })
-                                res.json({
-                                    id: user.id,
-                                    message: "Logged in ... 🔓"
-                                });
-                            } else {
-                                next(new Error('Invalid Login'));
-                            }
-                        });
-                } else {
-                    next(new Error('Invalid Login'));
-                }
-            });
-    } else {
-        next(new Error('Invalid Login'))
-    }
-});
-
 module.exports = router;
 
