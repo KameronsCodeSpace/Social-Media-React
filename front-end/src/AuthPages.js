@@ -10,15 +10,28 @@ import Workspace from './Workspace';
 
 import { Switch, Route } from 'react-router-dom';
 
-function AuthPages() {
+const AuthPages = (props) => {
+
+  const handleAlbumsUser = () => {
+    return <Albums currentUser={props.currentUser} />
+  }
+
+  const handleFeedUser = () => {
+    return <Feed currentUser={props.currentUser} />
+  }
+
+  const handleWorkspaceUser = () => {
+    return <Workspace currentUser={props.currentUser} />
+  }
+
   return (
     <div>
 
       <Nav />
       <Switch>
-        <Route path="/Albums" exact component={Albums} />
-        <Route path="/Feed" exact component={Feed} />
-        <Route path="/Workspace" exact component={Workspace} />
+        <Route path="/albums" exact render={ handleAlbumsUser } />
+        <Route path="/feed" exact render={ handleFeedUser } />
+        <Route path="/workspace" exact render={ handleWorkspaceUser } />
       </Switch>
 
     </div>
