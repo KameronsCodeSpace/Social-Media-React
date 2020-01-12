@@ -69,7 +69,7 @@ class App extends Component {
           password: this.state.password
         });
       this.setState(() => ({
-        currentUser: response.data,
+        currentUser: response.data.user,
         userLoggedIn: true
       }))
     } catch (error) {
@@ -92,7 +92,7 @@ class App extends Component {
           password: this.state.password
         });
       this.setState(() => ({
-        currentUser: response.data.data,
+        currentUser: response.data.user,
         userLoggedIn: true
       }))
     } catch (error) {

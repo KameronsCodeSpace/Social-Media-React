@@ -52,7 +52,7 @@ router.post('/signup', async (req, res, next) => {
                 delete data.password;
                 //  redirect
                 res.json({
-                    data,
+                    user: data,
                     message: '✅'
                 });
 
