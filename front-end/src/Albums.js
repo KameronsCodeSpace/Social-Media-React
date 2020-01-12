@@ -3,7 +3,7 @@ import './App.css';
 import axios from 'axios';
 
 class Albums extends Component {
-    constructor() {
+    constructor(props) {
         super()
         this.state = {
             albumName: '',
@@ -42,7 +42,7 @@ class Albums extends Component {
             <div>
                 <div>
                     <h1 id="albumsPageHeader">Albums Page</h1>
-                    <p>{`This is the User: ${this.props.currentUser.user.email}`}</p>
+                    <p>{`This is the User: ${this.props.currentUser.email}`}</p>
                     <p>{`Number of albums: ${this.state.numberOfAlbums}`}</p>
 
                     <form>

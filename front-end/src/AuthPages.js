@@ -13,11 +13,7 @@ import { Switch, Route } from 'react-router-dom';
 const AuthPages = (props) => {
 
   const handleAlbumsUser = () => {
-    return <Albums
-      currentUser={props.currentUser}
-      handleAlbumsFormSubmit={props.handleAlbumsFormSubmit}
-      addAlbum={props.addAlbum}
-      handleAlbumsInputChange={props.handleAlbumsInputChange} />
+    return <Albums currentUser={props.currentUser} />
   }
 
   const handleFeedUser = () => {
