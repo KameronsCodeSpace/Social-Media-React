@@ -13,7 +13,11 @@ import { Switch, Route } from 'react-router-dom';
 const AuthPages = (props) => {
 
   const handleAlbumsUser = () => {
-    return <Albums currentUser={props.currentUser} />
+    return <Albums
+      currentUser={props.currentUser}
+      handleAlbumsFormSubmit={props.handleAlbumsFormSubmit}
+      addAlbum={props.addAlbum}
+      handleAlbumsInputChange={props.handleAlbumsInputChange} />
   }
 
   const handleFeedUser = () => {
@@ -29,9 +33,9 @@ const AuthPages = (props) => {
 
       <Nav />
       <Switch>
-        <Route path="/albums" exact render={ handleAlbumsUser } />
-        <Route path="/feed" exact render={ handleFeedUser } />
-        <Route path="/workspace" exact render={ handleWorkspaceUser } />
+        <Route path="/albums" exact render={handleAlbumsUser} />
+        <Route path="/feed" exact render={handleFeedUser} />
+        <Route path="/workspace" exact render={handleWorkspaceUser} />
       </Switch>
 
     </div>

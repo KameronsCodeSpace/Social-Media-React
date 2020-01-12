@@ -6,7 +6,8 @@ const LoginUser = (props) => {
 
 
     if (props.userLoggedIn === true) {
-        return <Redirect to="/albums" />    }
+        return <Redirect to='/albums' />
+    }
     return (
         <div>
             <h1>Login Page</h1>

@@ -3,7 +3,7 @@ import { Redirect } from 'react-router-dom';
 
 const SignUp = (props) => {
     if (props.userLoggedIn === true) {
-        return <Redirect to="/albums" />
+        return <Redirect to='/albums' />
     }
         return (
             <div>

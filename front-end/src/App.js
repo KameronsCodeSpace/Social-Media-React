@@ -18,6 +18,7 @@ class App extends Component {
       userLoggedIn: false,
       email: '',
       password: ''
+
     }
     this.state = this.initialState
   }
@@ -27,9 +28,10 @@ class App extends Component {
       loginUser={this.loginUser}
       handleEmail={this.handleEmail}
       handlePassword={this.handlePassword}
+      userLoggedIn={this.state.userLoggedIn}
+
       email={this.state.email}
       password={this.state.password}
-      userLoggedIn={this.state.userLoggedIn}
     />
   }
 
@@ -38,9 +40,11 @@ class App extends Component {
       signUpUser={this.signUpUser}
       handleEmail={this.handleEmail}
       handlePassword={this.handlePassword}
+      userLoggedIn={this.state.userLoggedIn}
+
       email={this.state.email}
       password={this.state.password}
-      userLoggedIn={this.state.userLoggedIn}
+
     />
   }
 
@@ -54,7 +58,6 @@ class App extends Component {
     this.setState({
       password: event.target.value
     })
-
   }
 
   loginUser = async (event) => {
@@ -104,7 +107,10 @@ class App extends Component {
   }
 
   renderAuthComponents = () => {
-    return <AuthPages currentUser={this.state.currentUser} />
+    return <AuthPages
+      currentUser={this.state.currentUser}
+      userLoggedIn={this.state.userLoggedIn}
+    />
   }
 
   render() {
