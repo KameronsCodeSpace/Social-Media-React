@@ -7,9 +7,8 @@ CREATE TABLE users (
     id SERIAL PRIMARY KEY,
     email VARCHAR UNIQUE,
     password VARCHAR NOT NULL,
-    created_at VARCHAR,
-    is_logged_in BOOLEAN
-);
+    created_at VARCHAR
+    );
 
 CREATE TABLE images (
     id SERIAL PRIMARY KEY,
@@ -39,8 +38,8 @@ CREATE TABLE posts (
 -- images and albumImages
 
 
-INSERT INTO USERS (email, password, created_at, is_logged_in) VALUES
-('Bob@email.com', '123456', null, false),
-('Sam@email.com', '123456', null, false),
-('Adam@email.com', '123456', null, false)
+INSERT INTO USERS (email, password, created_at) VALUES
+('Bob@email.com', '123456', null),
+('Sam@email.com', '123456', null),
+('Adam@email.com', '123456', null)
 ;

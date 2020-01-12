@@ -3,12 +3,12 @@ import './App.css';
 import axios from 'axios';
 
 class Albums extends Component {
-    constructor(props) {
+    constructor() {
         super()
         this.state = {
             albumName: '',
-            album_owner: props.currentUser.user.email,
-            numberOfAlbums: [],
+            album_owner: '',
+            numberOfAlbums: 'Works',
             albumInputValue: ""
         }
     }
@@ -31,19 +31,19 @@ class Albums extends Component {
         });
     }
     render() {
-        const { currentUser } = this.props
+        // const { currentUser } = this.props
 
-        console.log('Checking User', currentUser.user.email)
-        const loggedInUser = currentUser.user.email;
-        const numberOfAlbums = this.numberOfAlbums;
+        // console.log('Checking User', currentUser)
+        // const loggedInUser = currentUser;
+        // const numberOfAlbums = this.numberOfAlbums;
 
 
         return (
             <div>
                 <div>
                     <h1 id="albumsPageHeader">Albums Page</h1>
-                    <p>{`This is the User: ${loggedInUser}`}</p>
-                    <p>{`Number of albums: ${numberOfAlbums}`}</p>
+                    <p>{`This is the User: ${this.props.currentUser.user.email}`}</p>
+                    <p>{`Number of albums: ${this.state.numberOfAlbums}`}</p>
 
                     <form>
                         <input
@@ -53,7 +53,7 @@ class Albums extends Component {
                             value={this.albumInputValue}
                             onChange={this.handleAlbumsFormSubmit}
                         />
-                        <button type="button" id="addAlbumButton" class="btn btn-success btn-circle btn-xl">Add</button>
+                        <button type="button" id="addAlbumButton" className="btn btn-success btn-circle btn-xl">Add</button>
                     </form>
                 </div>
 

@@ -130,19 +130,3 @@ class App extends Component {
 }
 
 export default App;
-
-  //   signup = () => {
-  //     console.log('User', this.user)
-  //     const API_URL = this.getHostURL();
-  //     const AUTH_URL = `${API_URL}/auth`;
-
-  //     return get.post(`${AUTH_URL}/signup`, user)
-  // }
-
-  // getHostURL = () => {
-  //   if (window.location.host.indexOf('localhost') !== -1) {
-  //       return 'http://localhost:3001';
-  //   } else {
-  //       return 'https://collage-entourage.com';
-  //   }
-  // }
