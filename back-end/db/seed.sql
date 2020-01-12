@@ -19,7 +19,7 @@ CREATE TABLE images (
 CREATE TABLE albums (
     id SERIAL PRIMARY KEY,
     --image_id INT REFERENCES images (id),
-    album_owner VARCHAR REFERENCES users (id),
+    album_owner VARCHAR REFERENCES users (email),
     album_name VARCHAR UNIQUE
 );
 
@@ -27,7 +27,7 @@ CREATE TABLE album_images (
     id SERIAL PRIMARY KEY,
     photo_id INT REFERENCES images (id),
     album_id INT REFERENCES albums (id)
-)
+);
 
 CREATE TABLE posts (
     id SERIAL PRIMARY KEY,
