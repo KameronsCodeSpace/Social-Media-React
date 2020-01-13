@@ -17,8 +17,9 @@ class App extends Component {
       currentUser: '',
       userLoggedIn: false,
       email: '',
-      password: ''
-
+      password: '',
+      error: false,
+      errorMsg: 'Wrong Creds'
     }
     this.state = this.initialState
   }
@@ -32,6 +33,8 @@ class App extends Component {
 
       email={this.state.email}
       password={this.state.password}
+      error={this.state.error}
+      errorMsg={this.state.errorMsg}
     />
   }
 
@@ -44,7 +47,8 @@ class App extends Component {
 
       email={this.state.email}
       password={this.state.password}
-
+      error={this.state.error}
+      errorMsg={this.state.errorMsg}
     />
   }
 
@@ -73,11 +77,12 @@ class App extends Component {
         userLoggedIn: true
       }))
     } catch (error) {
-      console.error(error)
-
-      // const errorMessage = document.getElementById('errorMessage');
-      // errorMessage.text(error.responseJSON.message);
-      // errorMessage.show();
+      console.log('error =>', error.response.data)
+      ;
+      this.setState(() => ({
+        error: true,
+        errorMsg: error.response.data.message
+      }))
     }
     console.log('Current User', this.state.currentUser)
   }
@@ -96,14 +101,15 @@ class App extends Component {
         userLoggedIn: true
       }))
     } catch (error) {
-      console.error(error)
+      console.log('error =>', error.response.data)
+      ;
+      this.setState(() => ({
+        error: true,
+        errorMsg: error.response.data.message
 
-      // const $errorMessage = $('#errorMessage');
-      // $errorMessage.text(error.responseJSON.message);
-      // $errorMessage.show();
+      }))
     }
     console.log('User', this.state.currentUser)
-
   }
 
   renderAuthComponents = () => {

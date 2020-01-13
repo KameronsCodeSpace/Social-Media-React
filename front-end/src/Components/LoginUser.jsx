@@ -14,7 +14,7 @@ const LoginUser = (props) => {
 
             <main>
                 <section>
-                    <div className="alert alert-danger" role="alert" id="errorMessage"></div>
+                    <div className="alert alert-danger" role="alert" id={props.error ? "" : "errorMessage"}>{`${props.errorMsg}`}</div>
                     <form className="form" onSubmit={props.loginUser}>
                         <div className="form-group">
                             <label htmlFor="email" id="loginEmailLabel">Email</label>
