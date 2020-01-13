@@ -7,18 +7,18 @@ const db = require('../db/connection')
 const Router = express.Router();
 
 // GET ALBUM BY ID
-Router.get('/:id', async (req, res) => {
-    const userId = req.params.user_id;
+Router.get('/:email', async (req, res) => {
+    const email = req.params.email;
 
     try {
-        const query = 'SELECT * FROM albums WHERE image_id = $1';
-        const data = await db.any(query, [userId]);
+        const query = 'SELECT * FROM albums WHERE album_owner = $1';
+        const data = await db.any(query, [email]);
         res.json({
             message: 'Returned all albums',
             payload: data
         });
     } catch (err) {
-        console.log(err);
+        console.log("error:", err);
         res.send(`Something went wrong, try again later.`);
     };
 });
@@ -38,6 +38,7 @@ Router.post("/", async (req, res) => {
             "payload": [req.body.album_owner, req.body.album_name]
         });
     } catch (error) {
+        console.log("error:", error);
         res.json({
             "status": "error",
             message: "Couldn't add a album",
