@@ -9,7 +9,7 @@ const Workspace = (props) => {
     return (
         <div>
             <h1>Workspace Page</h1>
-            <p>{`This is the User: ${this.props.currentUser.email}`}</p>
+            <p>{`This is the User: ${props.currentUser.email}`}</p>
             <p>{`Authentication: ${props.isAuthenticated}`}</p>
 
         </div>
