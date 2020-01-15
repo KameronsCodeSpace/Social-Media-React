@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
 class Albums extends Component {
     constructor(props) {
@@ -61,6 +61,10 @@ class Albums extends Component {
         // const loggedInUser = currentUser;
         // const numberOfAlbums = this.numberOfAlbums;
 
+        if (this.props.isAuthenticated === false) {
+            return <Redirect to='/' />
+        }
+
         let { album_name, album_owner, albums, albumInputValue } = this.state;
 
         let albumsList = albums.map(element => {
@@ -78,6 +82,8 @@ class Albums extends Component {
                 <div>
                     <h1 id="albumsPageHeader">Albums Page</h1>
                     <p>{`This is the User: ${this.props.currentUser.email}`}</p>
+                    <p>{`Authentication: ${this.props.isAuthenticated}`}</p>
+
 
                     <form onSubmit={this.handleAlbumsFormSubmit}>
                         <input

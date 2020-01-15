@@ -1,8 +1,5 @@
 import React from 'react';
 import './App.css';
-// import Login from './Landing'
-// import LoginUser from './Components/LoginUser'
-// import SignUp from './Components/SignUp'
 import Nav from './Components/Nav';
 import Feed from './Feed';
 import Albums from './Albums';
@@ -15,20 +12,24 @@ const AuthPages = (props) => {
   console.log('More Checking', props.signOut)
 
   const handleAlbumsUser = () => {
-    return <Albums 
-    currentUser={props.currentUser} />
+    return <Albums
+      currentUser={props.currentUser}
+      isAuthenticated={props.isAuthenticated}
+      />
   }
 
   const handleFeedUser = () => {
-    return <Feed currentUser={props.currentUser} />
+    return <Feed
+      currentUser={props.currentUser}
+      isAuthenticated={props.isAuthenticated}
+      />
   }
 
   const handleWorkspaceUser = () => {
-    return <Workspace currentUser={props.currentUser} />
-  }
-
-  const handleSignOut = () => {
-    return <Nav signOut={props.signOut} />
+    return <Workspace
+      currentUser={props.currentUser}
+      isAuthenticated={props.isAuthenticated}
+      />
   }
 
   return (
