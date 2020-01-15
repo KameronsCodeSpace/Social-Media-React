@@ -12,8 +12,11 @@ import { Switch, Route } from 'react-router-dom';
 
 const AuthPages = (props) => {
 
+  console.log('More Checking', props.signOut)
+
   const handleAlbumsUser = () => {
-    return <Albums currentUser={props.currentUser} />
+    return <Albums 
+    currentUser={props.currentUser} />
   }
 
   const handleFeedUser = () => {
@@ -24,10 +27,14 @@ const AuthPages = (props) => {
     return <Workspace currentUser={props.currentUser} />
   }
 
+  const handleSignOut = () => {
+    return <Nav signOut={props.signOut} />
+  }
+
   return (
     <div>
 
-      <Nav />
+      <Nav signOut={() => props.signOut()} />
       <Switch>
         <Route path="/albums" exact render={handleAlbumsUser} />
         <Route path="/feed" exact render={handleFeedUser} />

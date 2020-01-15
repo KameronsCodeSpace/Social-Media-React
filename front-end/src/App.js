@@ -19,7 +19,7 @@ class App extends Component {
       email: '',
       password: '',
       error: false,
-      errorMsg: 'Wrong Creds'
+      errorMsg: ''
     }
     this.state = this.initialState
   }
@@ -29,8 +29,8 @@ class App extends Component {
       loginUser={this.loginUser}
       handleEmail={this.handleEmail}
       handlePassword={this.handlePassword}
-      userLoggedIn={this.state.userLoggedIn}
 
+      userLoggedIn={this.state.userLoggedIn}
       email={this.state.email}
       password={this.state.password}
       error={this.state.error}
@@ -78,7 +78,7 @@ class App extends Component {
       }))
     } catch (error) {
       console.log('error =>', error.response.data)
-      ;
+        ;
       this.setState(() => ({
         error: true,
         errorMsg: error.response.data.message
@@ -102,7 +102,7 @@ class App extends Component {
       }))
     } catch (error) {
       console.log('error =>', error.response.data)
-      ;
+        ;
       this.setState(() => ({
         error: true,
         errorMsg: error.response.data.message
@@ -112,8 +112,21 @@ class App extends Component {
     console.log('User', this.state.currentUser)
   }
 
+  signOut = () => {
+    console.log("Sign Out")
+    this.setState(() => ({
+      currentUser: '',
+      userLoggedIn: false,
+      email: '',
+      password: '',
+      error: false,
+      errorMsg: ''
+    }))
+  }
+
   renderAuthComponents = () => {
     return <AuthPages
+      signOut={this.signOut}
       currentUser={this.state.currentUser}
       userLoggedIn={this.state.userLoggedIn}
     />
