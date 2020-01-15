@@ -35,7 +35,10 @@ class Albums extends Component {
         let album_owner = this.props.currentUser.email;
         let album_name = this.state.album_name;
         let response = await axios.get(`http://localhost:3001/albums/${album_owner}`);
-        console.log("response:", response);
+        console.log("response:", response.data.payload);
+        this.setState({
+            albums: response.data.payload
+        })
     }
 
     handleAlbumsInputChange = (event) => {
@@ -44,7 +47,14 @@ class Albums extends Component {
             album_name: event.target.value
         });
     }
+
+    componentDidMount() {
+        console.log("component did mount")
+        this.getAlbums()
+    }
+
     render() {
+        console.log("render")
         // const { currentUser } = this.props
 
         // console.log('Checking User', currentUser)
@@ -55,11 +65,11 @@ class Albums extends Component {
 
         let albumsList = albums.map(element => {
             return (
-                <Link>
-                    <div>
-                        <p>{album_name}</p>
-                    </div>
-                </Link>
+                    <Link>
+                        <div className="everyAlbum">
+                            <p>{element.album_name}</p>
+                        </div>
+                    </Link>
             );
         });
 
@@ -68,7 +78,6 @@ class Albums extends Component {
                 <div>
                     <h1 id="albumsPageHeader">Albums Page</h1>
                     <p>{`This is the User: ${this.props.currentUser.email}`}</p>
-                    <p>{`Number of albums: ${this.state.albums}`}</p>
 
                     <form onSubmit={this.handleAlbumsFormSubmit}>
                         <input
@@ -83,7 +92,7 @@ class Albums extends Component {
                 </div>
 
                 <div id="containerDivForAlbums">
-                    {this.getAlbums}
+                   {albumsList}
                 </div>
             </div>
         );
