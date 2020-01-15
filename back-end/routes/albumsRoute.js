@@ -9,7 +9,6 @@ const Router = express.Router();
 // GET ALBUM BY ID
 Router.get('/:email', async (req, res) => {
     const email = req.params.email;
-
     try {
         const query = 'SELECT * FROM albums WHERE album_owner = $1';
         const data = await db.any(query, [email]);
@@ -19,7 +18,11 @@ Router.get('/:email', async (req, res) => {
         });
     } catch (err) {
         console.log("error:", err);
-        res.send(`Something went wrong, try again later.`);
+        res.json({
+            "status": "error",
+            message: `Something went wrong, try again later`,
+            payload: null
+        });
     };
 });
 

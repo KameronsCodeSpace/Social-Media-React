@@ -241,3 +241,25 @@ li {
 #landingHeader {
   text-align: center;
 }
+
+.everyAlbum {
+  display: inline-block;
+  width: 15%;
+  height: 115%;
+  border: solid 1px #104C91;
+  margin-top: 1%;
+  margin-left: 2%;
+  background-color: #104C91;
+  color: white;
+}
+
+#containerDivForAlbums {
+  display: flexbox;
+  justify-content: space-between;
+  width: 80%;
+  height: 65%;
+  border: solid 2px #104C91;
+  margin-top: 2%;
+  margin-right: auto;
+  margin-left: auto;
+}
