@@ -6,14 +6,11 @@ const Nav = (props) => {
     const navStyle = {
         color: 'white'
     }
-    // console.log('Props', props.props.signOut)
-    // console.log('Props Check', props)
-
-
 
     return (
         <nav>
-            <h3>Logo</h3>
+            <img alt='logo' id="logostuff" src='https://media.giphy.com/media/9zXGh4BXE0XvkrnSd9/giphy.gif'></img>
+
             <ul className="nav-links">
                 <Link style={navStyle} to='/Feed'><li>Feed</li></Link>
                 <Link style={navStyle} to='/Albums'><li>Albums</li></Link>

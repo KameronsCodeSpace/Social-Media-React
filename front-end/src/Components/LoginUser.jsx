@@ -4,7 +4,6 @@ import { Redirect } from 'react-router-dom';
 
 const LoginUser = (props) => {
 
-
     if (props.userLoggedIn === true) {
         return <Redirect to='/albums' />
     }

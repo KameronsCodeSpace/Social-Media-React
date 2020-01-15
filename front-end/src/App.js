@@ -15,11 +15,12 @@ class App extends Component {
     super();
     this.initialState = {
       currentUser: '',
-      userLoggedIn: false,
       email: '',
       password: '',
+      errorMsg: '',
+      userLoggedIn: false,
       error: false,
-      errorMsg: ''
+      isAuthenticated: false
     }
     this.state = this.initialState
   }
@@ -74,14 +75,16 @@ class App extends Component {
         });
       this.setState(() => ({
         currentUser: response.data.user,
-        userLoggedIn: true
+        userLoggedIn: true,
+        isAuthenticated: true
       }))
     } catch (error) {
       console.log('error =>', error.response.data)
         ;
       this.setState(() => ({
         error: true,
-        errorMsg: error.response.data.message
+        errorMsg: error.response.data.message,
+        isAuthenticated: true
       }))
     }
     console.log('Current User', this.state.currentUser)
@@ -98,7 +101,8 @@ class App extends Component {
         });
       this.setState(() => ({
         currentUser: response.data.user,
-        userLoggedIn: true
+        userLoggedIn: true,
+        isAuthenticated: true
       }))
     } catch (error) {
       console.log('error =>', error.response.data)
@@ -116,19 +120,27 @@ class App extends Component {
     console.log("Sign Out")
     this.setState(() => ({
       currentUser: '',
-      userLoggedIn: false,
       email: '',
       password: '',
+      errorMsg: '',
+      userLoggedIn: false,
       error: false,
-      errorMsg: ''
+      isAuthenticated: false
     }))
   }
+
+  // authenticate = () => {
+  //   this.setState(() => ({
+  //     isAuthenticated: true
+  //   }))
+  // }
 
   renderAuthComponents = () => {
     return <AuthPages
       signOut={this.signOut}
       currentUser={this.state.currentUser}
       userLoggedIn={this.state.userLoggedIn}
+      isAuthenticated={this.state.isAuthenticated}
     />
   }
 
