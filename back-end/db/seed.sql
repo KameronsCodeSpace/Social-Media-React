@@ -12,14 +12,15 @@ CREATE TABLE users (
 
 CREATE TABLE images (
     id SERIAL PRIMARY KEY,
-    imageUrl VARCHAR
+    imageUrl VARCHAR,
+    image_owner VARCHAR REFERENCES users (email)
 );
 
 CREATE TABLE albums (
     id SERIAL PRIMARY KEY,
     --image_id INT REFERENCES images (id),
     album_owner VARCHAR REFERENCES users (email),
-    album_name VARCHAR UNIQUE
+    album_name VARCHAR
 );
 
 CREATE TABLE album_images (
