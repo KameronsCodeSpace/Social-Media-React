@@ -50,6 +50,35 @@ Router.post("/", async (req, res) => {
    }
 });
 
+// ADD IMAGE IN SPECIFIC ALBUM
+Router.post("/image", async (req, res) => {
+    console.log("POST method for adding a image to a specific album started");
+    console.log("req.body:", req.body);
+    let insertQuery1 = `
+        INSERT INTO images (imageUrl, image_owner) VALUES ($1, $2) RETURNING id
+    `
+    let insertQuery2 = `
+    INSERT INTO album_images (photo_id, album_id) VALUES ($1, $2)
+    `;
+    try {
+        let insertedImage = await db.one(insertQuery1, [req.body.imageUrl, req.body.image_owner]);
+        console.log("insertedImage: ", insertedImage) // Plug in id into the next query
+        await db.none(insertQuery2, [req.body.photo_id, req.body.album_name]);
+        res.json({
+            "status": "Success",
+            "message": "Added one album",
+            "payload": [req.body.photo_id, req.body.album_name]
+        });
+    } catch (error) {
+        console.log("error:", error);
+        res.json({
+            "status": "error",
+            message: "Couldn't add a image to a specific album",
+            payload: null
+        });
+   }
+});
+
 // DELETE SINGLE ALBUM
 Router.delete('/:id', async (req, res) => {
     const id = req.params.id

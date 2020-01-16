@@ -223,7 +223,7 @@ li {
   color: white;
 }
 
-#addAlbumButton {
+.albumButtons {
   background-color: coral;
   border-radius: 40%;
   height: 100%;
@@ -233,9 +233,13 @@ li {
   margin-left: 2%;
 }
 
-#albumNameInput {
+.albumInputs {
   margin-left: auto;
   margin-right: auto;
+}
+
+#addImageSelect {
+  margin-right: 2%;
 }
 
 #landingPageGIF {
@@ -243,6 +247,10 @@ li {
 }
 
 #landingHeader {
+  text-align: center;
+}
+
+#landingCaption {
   text-align: center;
 }
 
