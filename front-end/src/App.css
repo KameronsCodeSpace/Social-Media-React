@@ -66,6 +66,24 @@ li {
   width: 100px;
 }
 
+@keyframes fadein {
+  0% {opacity: 0;}
+  100% {opacity: 1;}
+}
+
+.workspace-pic {
+  position: absolute;
+  top: 500px;
+  left: 400px;
+  transform: translate(-50%, -50%) scale(0.5) rotate(10deg);
+  animation: fadein 0.5s;
+
+}
+
+.workspace-pic:hover {
+  z-index: 1;
+}
+
 
 @media only screen and (max-width: 376px) and (min-width: 374px) {
   nav {
