@@ -27,6 +27,7 @@ nav {
 
 li {
   color: white;
+  font-size: 107%;
 }
 
 .nav-links {
@@ -96,55 +97,6 @@ li {
 }
 
 
-@media only screen and (max-width: 376px) and (min-width: 374px) {
-  nav {
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    min-height: 10vh;
-    background: #104C91;
-    color: #EFC9AF;
-  }
-
-  .nav-links {
-    width: 65%;
-    display: flex;
-    justify-content: space-around;
-    align-items: left;
-    list-style: none;
-  }
-
-  li {
-    color: white;
-    margin-left: 10%;
-  }
-}
-
-@media only screen and (max-width: 376px) and (min-width: 374px) {
-  nav {
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    min-height: 10vh;
-    background: #104C91;
-    color: #EFC9AF;
-  }
-
-  .nav-links {
-    width: 65%;
-    display: flex;
-    justify-content: space-around;
-    align-items: left;
-    list-style: none;
-  }
-
-  li {
-    color: #EFC9AF;
-    margin-left: 10%;
-  }
-}
-
-
 .landingPageLoginButton {
   border-radius: 25px;
   border: 3px solid #104C91; 
@@ -165,11 +117,15 @@ li {
 
 #signUpPageHeader {
   margin-top: 2%;
+  display: table;
+  margin-left: auto;
+  margin-right: auto;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
 
 #signUpEmail {
   width: 50%;
-  height: 45px;
+  height: 50px;
   margin-left: auto;
   margin-right: auto;
   border: 5px solid #104C91;
@@ -178,7 +134,7 @@ li {
 
 #signUpPassword {
   width: 50%;
-  height: 45px;
+  height: 50px;
   margin-left: auto;
   margin-right: auto;
   border: 5px solid #104C91;
@@ -202,6 +158,7 @@ li {
   margin-top: 3%;
   text-align: left;
   border-radius: 10px;
+  border: 3px solid #104C91;
 }
 
 #loginPageHeader {
@@ -210,7 +167,7 @@ li {
 
 #loginEmail {
   width: 50%;
-  height: 45px;
+  height: 50px;
   margin-left: auto;
   margin-right: auto;
   border: 5px solid #104C91;
@@ -219,7 +176,7 @@ li {
 
 #loginPassword {
   width: 50%;
-  height: 45px;
+  height: 50px;
   margin-left: auto;
   margin-right: auto;
   border: 5px solid #104C91;
@@ -243,28 +200,34 @@ li {
   margin-top: 3%;
   text-align: left;
   border-radius: 10px;  
+  border: 3px solid #104C91;
 }
 
 #albumsPageHeader {
+  display: inline-block;
   margin-top: 1%;
-  margin-left: 3%;
-  text-align: left;
+  margin-left: 2%;
   color: white;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
 
 .albumButtons {
   background-color: coral;
-  border-radius: 40%;
+  border-radius: 50px;
   height: 100%;
   width: 10%;
   font-size: 150%;
   display: inline-block;
   margin-left: 2%;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+  border: 3px solid #104C91;
 }
 
 .albumInputs {
   margin-left: auto;
   margin-right: auto;
+  border-radius: 3px;
+  height: 40px
 }
 
 #addImageSelect {
@@ -276,31 +239,85 @@ li {
 }
 
 #landingHeader {
-  text-align: center;
+  display: table;
+  margin-left: auto;
+  margin-right: auto;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
 
 #landingCaption {
-  text-align: center;
+  display: table;
+  margin-left: auto;
+  margin-right: auto;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
 
 .everyAlbum {
   display: inline-block;
-  width: 15%;
-  height: 115%;
+  width: 100px;
+  height: 100px;
   border: solid 1px #104C91;
-  margin-top: 1%;
+  margin-top: 2%;
   margin-left: 2%;
+  margin-bottom: 2%;
   background-color: #104C91;
   color: white;
+  border-radius: 10px;
 }
 
 #containerDivForAlbums {
   display: flexbox;
   justify-content: space-between;
   width: 80%;
-  height: 65%;
+  height: 80%;
   border: solid 2px #104C91;
   margin-top: 2%;
   margin-right: auto;
   margin-left: auto;
+}
+
+#addedMessageParagraph {
+  display: inline-block;
+}
+
+#addAlbumHeader {
+  margin-top: 1%;
+  color: lightsalmon;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+#addImageHeader {
+  margin-top: 1%;
+  color: lightsalmon;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+.usernameHeader {
+  margin-top: 1%;
+  margin-right: 2%;
+  text-align: right;
+  display: inline-block;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+.pageHeadersWrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+#landingPageHeadersWrapper {
+  display: block;
+}
+
+.albumLabel {
+  margin-top: 35px;
+  margin-bottom: 35px;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+#loginHeader {
+  display: table;
+  margin-left: auto;
+  margin-right: auto;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }

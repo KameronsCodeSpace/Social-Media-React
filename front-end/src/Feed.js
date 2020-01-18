@@ -19,32 +19,17 @@ class Feed extends Component {
         if (isAuthenticated === false) {
             return <Redirect to='/' />
         }
-
         return (
             <div>
-                <h1>Feed Page</h1>
-                <p>{`This is the User: ${this.props.currentUser.email}`}</p>
-                <p>{`Authentication: ${this.props.isAuthenticated}`}</p>
+                <div className="pageHeadersWrapper">
+                    <h1>Feed</h1>
+                    <h2 className="usernameHeader">{`User: ${this.props.currentUser.email}`}</h2>
+                    <p hidden>{`Authentication: ${this.props.isAuthenticated}`}</p>
+                </div>
             </div>
         )
-
     }
 }
 
 
 export default Feed;
-
-// const Feed = (props) => {
-//     if (props.isAuthenticated === false) {
-//         return <Redirect to='/' />
-//     }
-
-//     return (
-//         <div>
-//             <h1>Feed Page</h1>
-//             <p>{`This is the User: ${props.currentUser.email}`}</p>
-//             <p>{`Authentication: ${props.isAuthenticated}`}</p>
-
-//         </div>
-//     );
-// }

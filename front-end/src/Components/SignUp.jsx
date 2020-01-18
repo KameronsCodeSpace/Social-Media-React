@@ -7,7 +7,7 @@ const SignUp = (props) => {
     }
     return (
         <div>
-            <h1 id="signUpPageHeader">Sign Up Page</h1>
+            <h1 id="signUpPageHeader">Sign Up</h1>
 
             <main>
                 <section>

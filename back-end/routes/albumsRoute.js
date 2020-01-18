@@ -57,17 +57,18 @@ Router.post("/image", async (req, res) => {
     let insertQuery1 = `
         INSERT INTO images (imageUrl, image_owner) VALUES ($1, $2) RETURNING id
     `
+    console.log("insertQuery1:", insertQuery1);
     let insertQuery2 = `
     INSERT INTO album_images (photo_id, album_id) VALUES ($1, $2)
     `;
     try {
         let insertedImage = await db.one(insertQuery1, [req.body.imageUrl, req.body.image_owner]);
-        console.log("insertedImage: ", insertedImage) // Plug in id into the next query
-        await db.none(insertQuery2, [req.body.photo_id, req.body.album_name]);
+        console.log("insertedImage: ", insertedImage.id) // Plug in id into the next query
+        await db.any(insertQuery2, [insertedImage.id, req.body.album_id]);
         res.json({
             "status": "Success",
-            "message": "Added one album",
-            "payload": [req.body.photo_id, req.body.album_name]
+            "message": `Added image number: ${insertedImage.id} to album number ${req.body.album_id}`,
+            "payload": [insertedImage.id, req.body.album_id]
         });
     } catch (error) {
         console.log("error:", error);
