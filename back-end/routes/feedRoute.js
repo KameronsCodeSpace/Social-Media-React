@@ -15,6 +15,7 @@ Router.get("/", async (req, res) => {
             "message": "Retrieved all posts",
             "payload": posts
         });
+        
     } catch (error) {
         console.log("Error:", error);
         res.status(500);
