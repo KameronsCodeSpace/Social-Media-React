@@ -31,7 +31,8 @@ CREATE TABLE album_images (
 
 CREATE TABLE posts (
     id SERIAL PRIMARY KEY,
-    post_owner INT REFERENCES users (email),
+    post_owner VARCHAR REFERENCES users (email),
+    title VARCHAR,
     body VARCHAR
 );
 

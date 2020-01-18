@@ -27,7 +27,10 @@ const feedRouter = require("./routes/feedRoute");
 const logInRouter = require("./routes/logInRoute");
 const signOutRouter = require("./routes/signOutRoute");
 const signUpRouter = require("./routes/signUpRoute");
+const myPostRoutes = require("./routes/myPostRoutes")
+
 app.use("/albums", albumsRouter);
+app.use("/myposts", myPostRoutes);
 app.use("/feed", feedRouter);
 // app.use("/log_in", logInRouter);
 // app.use("/sign_out", signOutRouter);

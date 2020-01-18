@@ -12,7 +12,7 @@ class Albums extends Component {
             albums: [],
             albumInputValue: "",
             secondInputValue: "",
-            selectAlbumID: "",
+            selectAlbum: "",
             addedMessage: ""
         }
     }

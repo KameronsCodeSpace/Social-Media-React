@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-
+import logo from "./Collage_Entourage_Logo.jpg"
 const Nav = (props) => {
 
     const navStyle = {
@@ -9,9 +9,12 @@ const Nav = (props) => {
 
     return (
         <nav>
-            <img alt='logo' id="logostuff" src='https://media.giphy.com/media/9zXGh4BXE0XvkrnSd9/giphy.gif'></img>
+            <img alt='logo' id="logostuff" src={logo}></img>
 
             <ul className="nav-links">
+                <Link style={navStyle} to={{
+                    pathname: `/MyPosts/${props.currentUser.email}`
+                }}><li>My Posts</li></Link>
                 <Link style={navStyle} to='/Feed'><li><strong>Feed</strong></li></Link>
                 <Link style={navStyle} to='/Albums'><li><strong>Albums</strong></li></Link>
                 <Link style={navStyle} to='/Workspace'><li><strong>Workspace</strong></li></Link>
