@@ -13,6 +13,7 @@ class Albums extends Component {
             albumInputValue: "",
             secondInputValue: "",
             selectAlbumID: "",
+            addedMessage: ""
         }
     }
     handleAlbumsFormSubmit = (event) => {
@@ -34,16 +35,21 @@ class Albums extends Component {
         let album_owner = this.props.currentUser.email;
         let album_name = this.state.album_name;
         let response = await axios.post(`http://localhost:3001/albums/`, { album_owner, album_name });
-        // console.log("response:", response) //save res to state and should be a obj reperesneting a album, , array to keep albums
+        this.setState({
+            addedMessage: `Added album named "${album_name}"`
+        });
     }
 
     addImageToSpecificAlbum = async () => {
         console.log("addImageToSpecificAlbum method starting");
         let image_owner = this.props.currentUser.email;
         let imageUrl = this.state.secondInputValue;
-        let album_id = this.state.selectAlbumID;
+        let album_id = this.state.selectAlbum;
+        console.log("album_id", album_id);
         let response = await axios.post(`http://localhost:3001/albums/image`, { imageUrl, image_owner, album_id });
-        // console.log("response:", response) //save res to state and should be a obj reperesneting a album, , array to keep albums
+        this.setState({
+            addedMessage: `Added Image!`
+        });
     }
 
     getAlbums = async () => {
@@ -54,7 +60,7 @@ class Albums extends Component {
         console.log("response:", response.data.payload);
         this.setState({
             albums: response.data.payload
-        })
+        });
     }
 
     handleAlbumsInputChange = (event) => {
@@ -74,8 +80,8 @@ class Albums extends Component {
         const albumID = event.target.value
         this.setState({
             selectAlbum: albumID
-        })
-        console.log('Current Breed', albumID)
+        });
+        console.log('Current AlbumID', albumID)
     }
 
     populateSelect = () => {
@@ -91,28 +97,23 @@ class Albums extends Component {
 
     componentDidMount() {
         console.log("component did mount")
-        this.getAlbums()
+        this.getAlbums();
     }
 
     render() {
         console.log("this state", this.state)
-        // const { currentUser } = this.props
-
-        // console.log('Checking User', currentUser)
-        // const loggedInUser = currentUser;
-        // const numberOfAlbums = this.numberOfAlbums;
 
         if (this.props.isAuthenticated === false) {
             return <Redirect to='/' />
         }
 
-        let { album_name, album_owner, albums, albumInputValue, secondInputValue, selectAlbumID } = this.state;
+        let { album_name, album_owner, albums, albumInputValue, secondInputValue, selectAlbumID, addedMessage } = this.state;
 
         let albumsList = albums.map(element => {
             return (
                     <Link>
                         <div className="everyAlbum">
-                            <p>{element.album_name}</p>
+                            <p className="albumLabel">{element.album_name}</p>
                         </div>
                     </Link>
             );
@@ -121,16 +122,18 @@ class Albums extends Component {
         return (
             <div>
                 <div>
-                    <h1 id="albumsPageHeader">Albums Page</h1>
-                    <p>{`This is the User: ${this.props.currentUser.email}`}</p>
-                    <p>{`Authentication: ${this.props.isAuthenticated}`}</p>
+                    <div className="pageHeadersWrapper">
+                        <h1 id="albumsPageHeader">Albums</h1>
+                        <h3 className="usernameHeader">{`User: ${this.props.currentUser.email}`}</h3>
+                        <p hidden>{`Authentication: ${this.props.isAuthenticated}`}</p>
+                    </div>
 
-                    <h2><strong>Add a Album</strong></h2>
+                    <h2 id="addAlbumHeader"><strong>Add a Album</strong></h2>
                     <form onSubmit={this.handleAlbumsFormSubmit}>
                         <input
                             type="text"
                             className="albumInputs"
-                            placeholder="Album Name"
+                            placeholder=" Album Name"
                             value={this.albumInputValue}
                             onChange={this.handleAlbumsInputChange}
                         />
@@ -139,7 +142,7 @@ class Albums extends Component {
                 </div>
 
                 <div>
-                    <h2><strong>Add a Image</strong></h2>
+                    <h2 id="addImageHeader"><strong>Add a Image</strong></h2>
                     <form onSubmit={this.handleSecondFormSubmit}>
                         <select id="addImageSelect" onChange={this.selectAlbum} value={selectAlbumID}>
                             <option value="">Album Name</option>
@@ -152,13 +155,15 @@ class Albums extends Component {
                         <input 
                             type="text"
                             className="albumInputs"
-                            placeholder="Picture Name"
+                            placeholder=" Image URL"
                             value={this.secondInputValue}
                             onChange={this.handleSecondInputChange}
                         />
                         <button type="submit" className="albumButtons btn btn-success btn-circle btn-xl">Add</button>
                     </form>
                 </div>
+
+                <p id="addedMessageParagraph"><strong>{addedMessage}</strong></p>
 
                 <div id="containerDivForAlbums">
                    {albumsList}
