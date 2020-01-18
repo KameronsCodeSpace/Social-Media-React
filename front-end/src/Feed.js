@@ -10,9 +10,11 @@ const Feed = (props) => {
 
     return (
         <div>
-            <h1>Feed Page</h1>
-            <p>{`This is the User: ${props.currentUser.email}`}</p>
-            <p>{`Authentication: ${props.isAuthenticated}`}</p>
+            <div className="pageHeadersWrapper">
+                <h1>Feed</h1>
+                <h2 className="usernameHeader">{`User: ${props.currentUser.email}`}</h2>
+                <p hidden>{`Authentication: ${props.isAuthenticated}`}</p>
+            </div>
 
         </div>
     );

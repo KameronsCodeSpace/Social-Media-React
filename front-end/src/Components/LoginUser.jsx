@@ -9,7 +9,7 @@ const LoginUser = (props) => {
     }
     return (
         <div>
-            <h1>Login Page</h1>
+            <h1 id="loginHeader">Log In</h1>
 
             <main>
                 <section>

@@ -31,8 +31,8 @@ CREATE TABLE album_images (
 
 CREATE TABLE posts (
     id SERIAL PRIMARY KEY,
-    post_owner INT REFERENCES users (id),
-    caption VARCHAR
+    post_owner INT REFERENCES users (email),
+    body VARCHAR
 );
 
 -- table that stores relationship between albums and images

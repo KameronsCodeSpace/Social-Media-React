@@ -12,10 +12,10 @@ const Nav = (props) => {
             <img alt='logo' id="logostuff" src='https://media.giphy.com/media/9zXGh4BXE0XvkrnSd9/giphy.gif'></img>
 
             <ul className="nav-links">
-                <Link style={navStyle} to='/Feed'><li>Feed</li></Link>
-                <Link style={navStyle} to='/Albums'><li>Albums</li></Link>
-                <Link style={navStyle} to='/Workspace'><li>Workspace</li></Link>
-                <Link style={navStyle} to='/' onClick={props.signOut}><li>Sign Out</li></Link>
+                <Link style={navStyle} to='/Feed'><li><strong>Feed</strong></li></Link>
+                <Link style={navStyle} to='/Albums'><li><strong>Albums</strong></li></Link>
+                <Link style={navStyle} to='/Workspace'><li><strong>Workspace</strong></li></Link>
+                <Link style={navStyle} to='/' onClick={props.signOut}><li><strong>Sign Out</strong></li></Link>
             </ul>
         </nav>
     );

@@ -5,8 +5,10 @@ import { Link } from 'react-router-dom';
 function Landing() {
     return (
         <div>
-            <h1 id="landingHeader">Collage Entourage</h1>
-            <p id="landingCaption"><strong>A Combination Of Creation</strong></p>
+            <div id="landingPageHeadersWrapper">
+                <h1 id="landingHeader">Collage Entourage</h1>
+                <p id="landingCaption"><strong>A Combination Of Creation</strong></p>
+            </div>
             <br />
             <br />
             <img alt='cover' id="landingPageGIF" src='https://media.giphy.com/media/JWGjPl2SpXUFW/giphy.gif'></img>
